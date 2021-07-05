@@ -19,6 +19,26 @@
 
 using namespace std;
 
+const string vertexShader =
+    "#version 330 core\n"
+    "\n"
+    "layout(location = 0) in vec4 position;\n"
+    "\n"
+    "void main()\n"
+    "{\n"
+    "   gl_Position = position;\n"
+    "}\n";
+
+const string fragmentShader =
+    "#version 330 core\n"
+    "\n"
+    "layout(location = 0) out vec4 color;\n"
+    "\n"
+    "void main()\n"
+    "{\n"
+    "   color = vec4(1.0, 0.0, 0.0, 1.0);\n"
+    "}\n";
+
 static unsigned int CompileShader(unsigned int type, const string& source) {
     unsigned int id = glCreateShader(type);
     const char *src = source.c_str();
@@ -98,35 +118,22 @@ int main(void)
          0.5f, -0.5f,
     };
 
-    unsigned int buffer;
+    unsigned int buffer, vertexArray;
+    glGenVertexArrays(1, &vertexArray);
     glGenBuffers(1, &buffer);
+    glBindVertexArray(vertexArray);
+    
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_STATIC_DRAW);
     
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
     
-    string vertexShader =
-        "#version 330 core\n"
-        "\n"
-        "layout(location = 0) in vec4 position;\n"
-        "\n"
-        "void main()\n"
-        "{\n"
-        "   gl_Position = position;\n"
-        "}\n";
-
-    string fragmentShader =
-        "#version 330 core\n"
-        "\n"
-        "layout(location = 0) out vec4 color;\n"
-        "\n"
-        "void main()\n"
-        "{\n"
-        "   color = vec4(1.0, 0.0, 0.0, 1.0);\n"
-        "}\n";
+//    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    
     unsigned int shader = CreateShader(vertexShader, fragmentShader);
     glUseProgram(shader);
+    glBindVertexArray(vertexArray);
     
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
