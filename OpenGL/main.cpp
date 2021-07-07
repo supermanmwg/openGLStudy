@@ -22,6 +22,28 @@
 
 using namespace std;
 
+#define ASSERT(x) if (!(x)) __builtin_trap();
+
+#define GLCall(x) { GLClearError();\
+    x;\
+    ASSERT(GLLogCall(#x, __FILE__, __LINE__))\
+    }
+
+
+static void GLClearError() {
+    while (glGetError() != GL_NO_ERROR);
+}
+
+static bool GLLogCall(const char * function, const char* file, int line) {
+    while (GLenum error = glGetError()) {
+        cout << "[OpenGL Error] (" << error << "):" << function << " " << file
+        << ":" << line << endl;
+        return false;
+    }
+    
+    return true;
+}
+
 struct ShaderProgramSource {
     string VertexSource;
     string FragmentSource;
@@ -168,7 +190,8 @@ int main(void)
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+        //GLCall(glDrawElements(GL_TRIANGLES, 6, GL_INT, nullptr)); //wrong test
+        GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
         
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
