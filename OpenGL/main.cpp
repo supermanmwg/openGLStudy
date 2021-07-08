@@ -128,7 +128,7 @@ int main(void)
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(640, 640, "Hello World", NULL, NULL);
     if (!window)
     {
         cout << " create window failed!" << endl;
@@ -184,8 +184,9 @@ int main(void)
     unsigned int shader = CreateShader(source.VertexSource, source.FragmentSource);
     glUseProgram(shader);
     
-    GLCall(int location = glGetUniformLocation(shader, "u_Color"));
-    
+    GLCall(int colorloc = glGetUniformLocation(shader, "u_Color"));
+    GLCall(int percentloc = glGetUniformLocation(shader, "u_Percent"));
+
     float r = 0.0f;
     float increment = 0.05f;
     /* Loop until the user closes the window */
@@ -195,8 +196,9 @@ int main(void)
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        GLCall(glUniform4f(location, r, 0.3f, 0.8f, 1.0f));
+        GLCall(glUniform4f(colorloc, r, 1 - r, 1 - r, 1.0f));
 
+        GLCall(glUniform1f(percentloc, r));
         //GLCall(glDrawElements(GL_TRIANGLES, 6, GL_INT, nullptr)); //wrong test
         GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
         
