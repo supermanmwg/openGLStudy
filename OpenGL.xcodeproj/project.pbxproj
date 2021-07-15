@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C52040C269D231A00628B44 /* Render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C52040A269D231A00628B44 /* Render.cpp */; };
+		3C52040F269D262800628B44 /* VertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C52040D269D262800628B44 /* VertexBuffer.cpp */; };
+		3C520411269D28FB00628B44 /* IndexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C520410269D28FB00628B44 /* IndexBuffer.cpp */; };
+		3C520E70269EA2F800628B44 /* VertexArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C520E6F269EA2F800628B44 /* VertexArray.cpp */; };
+		3C520E72269EA36400628B44 /* VertexBufferLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C520E71269EA36400628B44 /* VertexBufferLayout.cpp */; };
 		3C5E1703267D9E47006D0841 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C5E1702267D9E47006D0841 /* main.cpp */; };
 		3C5E176026805FD8006D0841 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5E175F26805FD8006D0841 /* OpenGL.framework */; };
 		3C5E17752680654A006D0841 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5E17742680654A006D0841 /* libGLEW.2.1.0.dylib */; };
@@ -26,6 +31,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3C52040A269D231A00628B44 /* Render.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Render.cpp; sourceTree = "<group>"; };
+		3C52040B269D231A00628B44 /* Render.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Render.h; sourceTree = "<group>"; };
+		3C52040D269D262800628B44 /* VertexBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexBuffer.cpp; sourceTree = "<group>"; };
+		3C52040E269D262800628B44 /* VertexBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexBuffer.h; sourceTree = "<group>"; };
+		3C520410269D28FB00628B44 /* IndexBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IndexBuffer.cpp; sourceTree = "<group>"; };
+		3C520412269D290E00628B44 /* IndexBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndexBuffer.h; sourceTree = "<group>"; };
+		3C520E6E269EA2E800628B44 /* VertexArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexArray.h; sourceTree = "<group>"; };
+		3C520E6F269EA2F800628B44 /* VertexArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexArray.cpp; sourceTree = "<group>"; };
+		3C520E71269EA36400628B44 /* VertexBufferLayout.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexBufferLayout.cpp; sourceTree = "<group>"; };
+		3C520E73269EA37100628B44 /* VertexBufferLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexBufferLayout.h; sourceTree = "<group>"; };
 		3C5E16FF267D9E47006D0841 /* OpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C5E1702267D9E47006D0841 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3C5E175F26805FD8006D0841 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -54,6 +69,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C520409269D230000628B44 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				3C52040A269D231A00628B44 /* Render.cpp */,
+				3C52040B269D231A00628B44 /* Render.h */,
+				3C52040D269D262800628B44 /* VertexBuffer.cpp */,
+				3C52040E269D262800628B44 /* VertexBuffer.h */,
+				3C520410269D28FB00628B44 /* IndexBuffer.cpp */,
+				3C520412269D290E00628B44 /* IndexBuffer.h */,
+				3C520E6E269EA2E800628B44 /* VertexArray.h */,
+				3C520E6F269EA2F800628B44 /* VertexArray.cpp */,
+				3C520E71269EA36400628B44 /* VertexBufferLayout.cpp */,
+				3C520E73269EA37100628B44 /* VertexBufferLayout.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		3C5E16F6267D9E47006D0841 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +106,7 @@
 		3C5E1701267D9E47006D0841 /* OpenGL */ = {
 			isa = PBXGroup;
 			children = (
+				3C520409269D230000628B44 /* src */,
 				3C63A7342693423000D9775B /* res */,
 				3C5E176B26806235006D0841 /* glew */,
 				3C5E17612680611D006D0841 /* glfw */,
@@ -209,6 +242,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C5E1703267D9E47006D0841 /* main.cpp in Sources */,
+				3C520E72269EA36400628B44 /* VertexBufferLayout.cpp in Sources */,
+				3C52040C269D231A00628B44 /* Render.cpp in Sources */,
+				3C520411269D28FB00628B44 /* IndexBuffer.cpp in Sources */,
+				3C520E70269EA2F800628B44 /* VertexArray.cpp in Sources */,
+				3C52040F269D262800628B44 /* VertexBuffer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
